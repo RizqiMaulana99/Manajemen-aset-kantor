@@ -20,14 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('assets', AssetController::class);
     Route::get('assets-export', [AssetController::class, 'export'])->name('assets.export');
 
-    Route::get('/fix-cache', function () {
-    Artisan::call('config:clear');
-    Artisan::call('cache:clear');
-    Artisan::call('route:clear');
-    Artisan::call('view:clear');
-    Artisan::call('config:cache');
-    return 'DONE';
-});
+
 
 });
 
