@@ -27,5 +27,8 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Laravel optimize
 RUN php artisan config:clear && php artisan config:cache
 
+RUN php artisan migrate --force
+RUN php artisan storage:link
+
 # Expose port for Railway
 CMD php artisan serve --host=0.0.0.0 --port=${PORT}
